@@ -228,10 +228,22 @@ int main(int argc, char **argv)
         }
     }
 
+    // subscribe and publish a topic
+    // tell master we need subscribe the information of IMAGE_TOPIC,
+    // and when the message arrived in topic, ROS would call img_callback function,
+    // the second parameter (100) is the size of the queue;
     ros::Subscriber sub_img = n.subscribe(IMAGE_TOPIC, 100, img_callback);
 
+    // advertise() would keep a registry of who is publishing and who is subscribing
+    // we take the keypoints(after correction) normalized into 3D point(p.z = 1), 
+    // 2d pixel point and id packaged into ros::sensor_msgs::PointCloud() 
+    // package image into Ptr of ros::cv_bridge::CvImageConstPtr;
     pub_img = n.advertise<sensor_msgs::PointCloud>("feature", 1000);
     pub_match = n.advertise<sensor_msgs::Image>("feature_img",1000);
+    
+    // when we need publish message data (pointcloud/feature_points and image/ptr) into topic of feature and feature_img
+    // pub_img.publish(feature_points)
+    // pub_match.publish(ptr->toImageMsg())
     pub_restart = n.advertise<std_msgs::Bool>("restart",1000);
     /*
     if (SHOW_TRACK)
@@ -240,7 +252,6 @@ int main(int argc, char **argv)
     ros::spin();
     return 0;
 }
-
 
 // new points velocity is 0, pub or not?
 // track cnt > 1 pub?
