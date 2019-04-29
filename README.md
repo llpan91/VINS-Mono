@@ -1,4 +1,4 @@
-# VINS-Mono
+#VINS - Mono
 ## A Robust and Versatile Monocular Visual-Inertial State Estimator
 **29 Dec 2017**: New features: Add map merge, pose graph reuse, online temporal calibration function, and support rolling shutter camera. Map reuse videos: 
 
@@ -33,21 +33,21 @@ alt="Mobile platform" width="240" height="180" border="10" /></a>
 * **VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator**, Tong Qin, Peiliang Li, Zhenfei Yang, Shaojie Shen [arXiv:1708.03852](https://arxiv.org/abs/1708.03852v1) 
 * **Autonomous Aerial Navigation Using Monocular Visual-Inertial Fusion**, Yi Lin, Fei Gao, Tong Qin, Wenliang Gao, Tianbo Liu, William Wu, Zhenfei Yang, Shaojie Shen, J Field Robotics. 2017;00:1–29. [https://doi.org/10.1002/rob.21732](https://doi.org/10.1002/rob.21732)  
 ```
-@article{qin2017vins,
-  title={VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator},
-  author={Qin, Tong and Li, Peiliang and Shen, Shaojie},
-  journal={arXiv preprint arXiv:1708.03852},
-  year={2017}
+@article{
+  qin2017vins, title = {VINS - Mono : A Robust and Versatile Monocular Visual - Inertial State Estimator},
+               author = {Qin, Tong and Li, Peiliang and Shen, Shaojie},
+               journal = {arXiv preprint arXiv : 1708.03852}, year = {
+                 2017
+               }
 }
 ```
 ```
-@article{Lin17,
-  Author = {Y. Lin and F. Gao and T. Qin and W. Gao and T. Liu and W. Wu and Z. Yang and S. Shen},
-  Journal = jfr,
-  Title = {Autonomous Aerial Navigation Using Monocular Visual-Inertial Fusion},  
-  Volume = {00},
-  Pages = {1-29},
-  Year = {2017}} 
+@article{
+  Lin17, Author = {Y.Lin and F.Gao and T.Qin and W.Gao and T.Liu and W.Wu and Z.Yang and S.Shen},
+         Journal = jfr, Title = {Autonomous Aerial Navigation Using Monocular Visual - Inertial Fusion},
+         Volume = {00}, Pages = {1 - 29}, Year = {
+           2017
+         }} 
 ```
 *If you use VINS-Mono for your academic research, please cite at least one of our related papers.*
 

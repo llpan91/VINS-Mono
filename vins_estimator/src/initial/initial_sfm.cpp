@@ -2,8 +2,8 @@
 
 GlobalSFM::GlobalSFM() {}
 
-void GlobalSFM::triangulatePoint(Eigen::Matrix<double, 3, 4> &Pose0, Eigen::Matrix<double, 3, 4> &Pose1, Vector2d &point0,
-                                 Vector2d &point1, Vector3d &point_3d) {
+void GlobalSFM::triangulatePoint(Eigen::Matrix<double, 3, 4> &Pose0, Eigen::Matrix<double, 3, 4> &Pose1,
+                                 Vector2d &point0, Vector2d &point1, Vector3d &point_3d) {
   Matrix4d design_matrix = Matrix4d::Zero();
   design_matrix.row(0) = point0[0] * Pose0.row(2) - Pose0.row(0);
   design_matrix.row(1) = point0[1] * Pose0.row(2) - Pose0.row(1);
@@ -94,8 +94,9 @@ void GlobalSFM::triangulateTwoFrames(int frame0, Eigen::Matrix<double, 3, 4> &Po
 //  c_translation cam_R_w
 // relative_q[i][j]  j_q_i
 // relative_t[i][j]  j_t_ji  (j < i)
-bool GlobalSFM::construct(int frame_num, Quaterniond *q, Vector3d *T, int l, const Matrix3d relative_R, const Vector3d relative_T,
-                          vector<SFMFeature> &sfm_f, map<int, Vector3d> &sfm_tracked_points) {
+bool GlobalSFM::construct(int frame_num, Quaterniond *q, Vector3d *T, int l, const Matrix3d relative_R,
+                          const Vector3d relative_T, vector<SFMFeature> &sfm_f,
+                          map<int, Vector3d> &sfm_tracked_points) {
   feature_num = sfm_f.size();
   // cout << "set 0 and " << l << " as known " << endl;
   // have relative_r relative_t
@@ -260,7 +261,8 @@ bool GlobalSFM::construct(int frame_num, Quaterniond *q, Vector3d *T, int l, con
   }
   for (int i = 0; i < (int)sfm_f.size(); i++) {
     if (sfm_f[i].state)
-      sfm_tracked_points[sfm_f[i].id] = Vector3d(sfm_f[i].position[0], sfm_f[i].position[1], sfm_f[i].position[2]);
+      sfm_tracked_points[sfm_f[i].id] =
+          Vector3d(sfm_f[i].position[0], sfm_f[i].position[1], sfm_f[i].position[2]);
   }
   return true;
 }

@@ -411,6 +411,10 @@ int main(int argc, char **argv) {
   n.getParam("visualization_shift_y", VISUALIZATION_SHIFT_Y);
   n.getParam("skip_cnt", SKIP_CNT);
   n.getParam("skip_dis", SKIP_DIS);
+  
+  std::cout << "SKIP_CNT = " << SKIP_CNT << std::endl;
+  std::cout << "SKIP_DIS = " << SKIP_DIS << std::endl;
+  
   std::string config_file;
   n.getParam("config_file", config_file);
   cv::FileStorage fsSettings(config_file, cv::FileStorage::READ);

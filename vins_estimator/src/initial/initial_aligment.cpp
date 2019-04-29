@@ -74,7 +74,8 @@ void RefineGravity(map<double, ImageFrame> &all_image_frame, Vector3d &g, Vector
 
       tmp_A.block<3, 3>(0, 0) = -dt * Matrix3d::Identity();
       tmp_A.block<3, 2>(0, 6) = frame_i->second.R.transpose() * dt * dt / 2 * Matrix3d::Identity() * lxly;
-      tmp_A.block<3, 1>(0, 8) = frame_i->second.R.transpose() * (frame_j->second.T - frame_i->second.T) / 100.0;
+      tmp_A.block<3, 1>(0, 8) =
+          frame_i->second.R.transpose() * (frame_j->second.T - frame_i->second.T) / 100.0;
       tmp_b.block<3, 1>(0, 0) = frame_j->second.pre_integration->delta_p +
                                 frame_i->second.R.transpose() * frame_j->second.R * TIC[0] - TIC[0] -
                                 frame_i->second.R.transpose() * dt * dt / 2 * g0;
@@ -82,8 +83,8 @@ void RefineGravity(map<double, ImageFrame> &all_image_frame, Vector3d &g, Vector
       tmp_A.block<3, 3>(3, 0) = -Matrix3d::Identity();
       tmp_A.block<3, 3>(3, 3) = frame_i->second.R.transpose() * frame_j->second.R;
       tmp_A.block<3, 2>(3, 6) = frame_i->second.R.transpose() * dt * Matrix3d::Identity() * lxly;
-      tmp_b.block<3, 1>(3, 0) =
-          frame_j->second.pre_integration->delta_v - frame_i->second.R.transpose() * dt * Matrix3d::Identity() * g0;
+      tmp_b.block<3, 1>(3, 0) = frame_j->second.pre_integration->delta_v -
+                                frame_i->second.R.transpose() * dt * Matrix3d::Identity() * g0;
 
       Matrix<double, 6, 6> cov_inv = Matrix<double, 6, 6>::Zero();
       // cov.block<6, 6>(0, 0) = IMU_cov[i + 1];
@@ -137,8 +138,8 @@ bool LinearAlignment(map<double, ImageFrame> &all_image_frame, Vector3d &g, Vect
     tmp_A.block<3, 3>(0, 0) = -dt * Matrix3d::Identity();
     tmp_A.block<3, 3>(0, 6) = frame_i->second.R.transpose() * dt * dt / 2 * Matrix3d::Identity();
     tmp_A.block<3, 1>(0, 9) = frame_i->second.R.transpose() * (frame_j->second.T - frame_i->second.T) / 100.0;
-    tmp_b.block<3, 1>(0, 0) =
-        frame_j->second.pre_integration->delta_p + frame_i->second.R.transpose() * frame_j->second.R * TIC[0] - TIC[0];
+    tmp_b.block<3, 1>(0, 0) = frame_j->second.pre_integration->delta_p +
+                              frame_i->second.R.transpose() * frame_j->second.R * TIC[0] - TIC[0];
     // cout << "delta_p   " << frame_j->second.pre_integration->delta_p.transpose() << endl;
     tmp_A.block<3, 3>(3, 0) = -Matrix3d::Identity();
     tmp_A.block<3, 3>(3, 3) = frame_i->second.R.transpose() * frame_j->second.R;
