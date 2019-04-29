@@ -22,9 +22,7 @@ private:
     double testTriangulation(const vector<cv::Point2f> &l,
                              const vector<cv::Point2f> &r,
                              cv::Mat_<double> R, cv::Mat_<double> t);
-    void decomposeE(cv::Mat E,
-                    cv::Mat_<double> &R1, cv::Mat_<double> &R2,
-                    cv::Mat_<double> &t1, cv::Mat_<double> &t2);
+    void decomposeE(cv::Mat E, cv::Mat_<double> &R1, cv::Mat_<double> &R2, cv::Mat_<double> &t1, cv::Mat_<double> &t2);
     int frame_count;
 
     vector< Matrix3d > Rc;
