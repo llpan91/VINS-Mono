@@ -57,10 +57,10 @@ void readParameters(ros::NodeHandle &n) {
   std::ofstream fout(VINS_RESULT_PATH, std::ios::out);
   fout.close();
 
-  ACC_N = fsSettings["acc_n"];
-  ACC_W = fsSettings["acc_w"];
-  GYR_N = fsSettings["gyr_n"];
-  GYR_W = fsSettings["gyr_w"];
+  ACC_N = fsSettings["acc_n"];	// acc measurement noise standard deviation
+  ACC_W = fsSettings["acc_w"];	// acc bias random work noise standard deviation
+  GYR_N = fsSettings["gyr_n"];	// gyro measurement noise standard deviation
+  GYR_W = fsSettings["gyr_w"];  // gyro bias random work noise standard deviation
   G.z() = fsSettings["g_norm"];
   ROW = fsSettings["image_height"];
   COL = fsSettings["image_width"];

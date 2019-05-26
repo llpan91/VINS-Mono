@@ -33,7 +33,7 @@ void FeatureTracker::setMask() {
     mask = cv::Mat(ROW, COL, CV_8UC1, cv::Scalar(255));
 
   // prefer to keep features that are tracked for long time
-  vector<pair<int, pair<cv::Point2f, int>>> cnt_pts_id;
+  std::vector<pair<int, pair<cv::Point2f, int>>> cnt_pts_id;
 
   for (unsigned int i = 0; i < forw_pts.size(); i++)
     cnt_pts_id.push_back(make_pair(track_cnt[i], make_pair(forw_pts[i], ids[i])));
