@@ -33,6 +33,7 @@ void FeatureTracker::setMask() {
     mask = cv::Mat(ROW, COL, CV_8UC1, cv::Scalar(255));
 
   // prefer to keep features that are tracked for long time
+  // track_cnt, cur_pts, ids 
   std::vector<pair<int, pair<cv::Point2f, int>>> cnt_pts_id;
 
   for (unsigned int i = 0; i < forw_pts.size(); i++)
@@ -92,8 +93,9 @@ void FeatureTracker::readImage(const cv::Mat &_img, double _cur_time) {
     vector<float> err;
     cv::calcOpticalFlowPyrLK(cur_img, forw_img, cur_pts, forw_pts, status, err, cv::Size(21, 21), 3);
 
-    for (int i = 0; i < int(forw_pts.size()); i++)
+    for (int i = 0; i < int(forw_pts.size()); i++) {
       if (status[i] && !inBorder(forw_pts[i])) status[i] = 0;
+    }
     reduceVector(prev_pts, status);
     reduceVector(cur_pts, status);
     reduceVector(forw_pts, status);

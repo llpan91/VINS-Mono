@@ -43,6 +43,7 @@ class FeatureTracker {
 
   void rejectWithF();
 
+  // undistort pt and compute pixel velocity(pixel/s)
   void undistortedPoints();
 
   cv::Mat mask;
