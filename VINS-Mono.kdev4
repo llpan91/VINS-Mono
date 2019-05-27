@@ -1,1 +1,3 @@
-[Project] Manager = KDevGenericManager Name = VINS - Mono
+[Project]
+Manager=KDevGenericManager
+Name=VINS-Mono

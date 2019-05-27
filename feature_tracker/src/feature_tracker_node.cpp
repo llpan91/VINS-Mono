@@ -108,11 +108,12 @@ void img_callback(const sensor_msgs::ImageConstPtr &img_msg) {
     feature_points->header = img_msg->header;
     feature_points->header.frame_id = "world";
 
-    vector<set<int>> hash_ids(NUM_OF_CAM);
+    // TODO 
+    std::vector<set<int> > hash_ids(NUM_OF_CAM);
     for (int i = 0; i < NUM_OF_CAM; i++) {
       auto &un_pts = trackerData[i].cur_un_pts;
       auto &cur_pts = trackerData[i].cur_pts;
-      auto &ids = trackerData[i].ids;
+      auto &ids = trackerData[i].ids; // index of kp
       auto &pts_velocity = trackerData[i].pts_velocity;
       for (unsigned int j = 0; j < ids.size(); j++) {
         if (trackerData[i].track_cnt[j] > 1) {
@@ -122,9 +123,9 @@ void img_callback(const sensor_msgs::ImageConstPtr &img_msg) {
           p.x = un_pts[j].x;
           p.y = un_pts[j].y;
           p.z = 1;
-
           feature_points->points.push_back(p);
-          id_of_point.values.push_back(p_id * NUM_OF_CAM + i);
+          
+	  id_of_point.values.push_back(p_id * NUM_OF_CAM + i);
           u_of_point.values.push_back(cur_pts[j].x);
           v_of_point.values.push_back(cur_pts[j].y);
           velocity_x_of_point.values.push_back(pts_velocity[j].x);
@@ -202,7 +203,6 @@ int main(int argc, char **argv) {
   }
 
   ros::Subscriber sub_img = n.subscribe(IMAGE_TOPIC, 100, img_callback);
-
   pub_img = n.advertise<sensor_msgs::PointCloud>("feature", 1000);
   pub_match = n.advertise<sensor_msgs::Image>("feature_img", 1000);
   pub_restart = n.advertise<std_msgs::Bool>("restart", 1000);

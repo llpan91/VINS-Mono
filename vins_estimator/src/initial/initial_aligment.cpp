@@ -102,6 +102,7 @@ void RefineGravity(map<double, ImageFrame> &all_image_frame, Vector3d &g, Vector
 
       A.block<6, 3>(i * 3, n_state - 3) += r_A.topRightCorner<6, 3>();
       A.block<3, 6>(n_state - 3, i * 3) += r_A.bottomLeftCorner<3, 6>();
+      // std::cout << "A = " << std::endl << A << std::endl;
     }
     A = A * 1000.0;
     b = b * 1000.0;
