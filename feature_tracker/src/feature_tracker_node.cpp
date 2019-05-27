@@ -188,9 +188,9 @@ int main(int argc, char **argv) {
   ros::NodeHandle n("~");
   ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
   readParameters(n);
-
-  for (int i = 0; i < NUM_OF_CAM; i++) trackerData[i].readIntrinsicParameter(CAM_NAMES[i]);
-
+  for (int i = 0; i < NUM_OF_CAM; i++) {
+    trackerData[i].readIntrinsicParameter(CAM_NAMES[i]);
+  }
   if (FISHEYE) {
     for (int i = 0; i < NUM_OF_CAM; i++) {
       trackerData[i].fisheye_mask = cv::imread(FISHEYE_MASK, 0);

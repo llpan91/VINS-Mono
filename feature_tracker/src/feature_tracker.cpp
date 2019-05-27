@@ -34,7 +34,7 @@ void FeatureTracker::setMask() {
 
   // prefer to keep features that are tracked for long time
   // track_cnt, cur_pts, ids 
-  std::vector<pair<int, pair<cv::Point2f, int>>> cnt_pts_id;
+  std::vector<pair<int, pair<cv::Point2f, int> > > cnt_pts_id;
 
   for (unsigned int i = 0; i < forw_pts.size(); i++)
     cnt_pts_id.push_back(make_pair(track_cnt[i], make_pair(forw_pts[i], ids[i])));
@@ -78,15 +78,12 @@ void FeatureTracker::readImage(const cv::Mat &_img, double _cur_time) {
     ROS_DEBUG("CLAHE costs: %fms", t_c.toc());
   } else
     img = _img;
-
   if (forw_img.empty()) {
     prev_img = cur_img = forw_img = img;
   } else {
     forw_img = img;
   }
-
   forw_pts.clear();
-
   if (cur_pts.size() > 0) {
     TicToc t_o;
     vector<uchar> status;

@@ -41,8 +41,8 @@ void registerPub(ros::NodeHandle &n) {
   keyframebasevisual.setLineWidth(0.01);
 }
 
-void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V,
-                       const std_msgs::Header &header) {
+void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, 
+		       const Eigen::Vector3d &V, const std_msgs::Header &header) {
   Eigen::Quaterniond quadrotor_Q = Q;
 
   nav_msgs::Odometry odometry;

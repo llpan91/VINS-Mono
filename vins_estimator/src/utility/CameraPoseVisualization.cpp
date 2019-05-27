@@ -51,7 +51,6 @@ void CameraPoseVisualization::add_edge(const Eigen::Vector3d& p0, const Eigen::V
   marker.type = visualization_msgs::Marker::LINE_LIST;
   marker.action = visualization_msgs::Marker::ADD;
   marker.scale.x = 0.005;
-
   marker.color.g = 1.0f;
   marker.color.a = 1.0;
 
@@ -66,7 +65,8 @@ void CameraPoseVisualization::add_edge(const Eigen::Vector3d& p0, const Eigen::V
   m_markers.push_back(marker);
 }
 
-void CameraPoseVisualization::add_loopedge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1) {
+void CameraPoseVisualization::add_loopedge(const Eigen::Vector3d& p0, 
+					   const Eigen::Vector3d& p1) {
   visualization_msgs::Marker marker;
 
   marker.ns = m_marker_ns;
